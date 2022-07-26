@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:snapping_sheet/snapping_sheet.dart';
 import 'package:snapping_sheet/src/sheet_size_calculator.dart';
-import 'package:snapping_sheet/src/snapping_calculator.dart';
 
 class ScrollControllerOverride extends StatefulWidget {
   final SheetSizeCalculator sizeCalculator;
@@ -9,7 +8,7 @@ class ScrollControllerOverride extends StatefulWidget {
   final SheetLocation sheetLocation;
   final Widget child;
 
-  final Function(double) dragUpdate;
+  final Function(DragUpdateDetails) dragUpdate;
   final VoidCallback dragEnd;
   final double currentPosition;
   final SnappingCalculator snappingCalculator;
@@ -53,8 +52,8 @@ class _ScrollControllerOverrideState extends State<ScrollControllerOverride> {
     if (!_allowScrolling) _lockScrollPosition(widget.scrollController);
   }
 
-  void _overrideScroll(double dragAmount) {
-    if (!_allowScrolling) widget.dragUpdate(dragAmount);
+  void _overrideScroll(DragUpdateDetails lastDragUpdate) {
+    if (!_allowScrolling) widget.dragUpdate(lastDragUpdate);
   }
 
   void _setLockPosition() {
@@ -125,9 +124,24 @@ class _ScrollControllerOverrideState extends State<ScrollControllerOverride> {
         final dragValue = widget.axis == Axis.horizontal
             ? -dragEvent.delta.dx
             : dragEvent.delta.dy;
+        Offset delta;
+        double primaryDelta;
+        if (widget.axis == Axis.horizontal) {
+          delta = Offset(dragEvent.delta.dx, 0);
+          primaryDelta = -dragEvent.delta.dx;
+        } else {
+          delta = Offset(0, dragEvent.delta.dy);
+          primaryDelta = dragEvent.delta.dy;
+        }
         _setDragDirection(dragValue);
         _setLockPosition();
-        _overrideScroll(dragValue);
+        _overrideScroll(DragUpdateDetails(
+          sourceTimeStamp: dragEvent.timeStamp,
+          delta: delta,
+          primaryDelta: primaryDelta,
+          globalPosition: dragEvent.position,
+          localPosition: dragEvent.localPosition,
+        ));
       },
       onPointerUp: (_) {
         if (!_allowScrolling)

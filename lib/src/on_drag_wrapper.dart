@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class OnDragWrapper extends StatelessWidget {
   final Widget child;
-  final Function(double) dragUpdate;
+  final Function(DragUpdateDetails) dragUpdate;
   final VoidCallback dragEnd;
   final Axis axis;
 
@@ -21,9 +21,7 @@ class OnDragWrapper extends StatelessWidget {
         onHorizontalDragEnd: (_) {
           this.dragEnd();
         },
-        onHorizontalDragUpdate: (dragData) {
-          this.dragUpdate(-dragData.delta.dx);
-        },
+        onHorizontalDragUpdate: this.dragUpdate,
         child: this.child,
       );
     }
@@ -31,9 +29,7 @@ class OnDragWrapper extends StatelessWidget {
       onVerticalDragEnd: (_) {
         this.dragEnd();
       },
-      onVerticalDragUpdate: (dragData) {
-        this.dragUpdate(dragData.delta.dy);
-      },
+      onVerticalDragUpdate: this.dragUpdate,
       child: this.child,
     );
   }

@@ -9,7 +9,7 @@ class SheetContentWrapper extends StatefulWidget {
   final SheetSizeCalculator sizeCalculator;
   final SnappingSheetContent? sheetData;
 
-  final Function(double) dragUpdate;
+  final Function(DragUpdateDetails) dragUpdate;
   final VoidCallback dragEnd;
   final double currentPosition;
   final SnappingCalculator snappingCalculator;

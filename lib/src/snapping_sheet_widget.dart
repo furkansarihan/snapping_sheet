@@ -74,6 +74,20 @@ class SnappingSheet extends StatefulWidget {
   /// [SnappingSheet]
   final SnappingSheetController? controller;
 
+  /// Customize snapping calculation with your own [SnappingCalculator]
+  /// implementation.
+  ///
+  /// On your implmenetation, [getBestSnappingPosition] should return the
+  /// destination snapping position.
+  final SnappingCalculator Function({
+    required List<SnappingPosition> allSnappingPositions,
+    required SnappingPosition lastSnappingPosition,
+    required double maxHeight,
+    required double grabbingHeight,
+    required double currentPosition,
+    required DragUpdateDetails? lastDragUpdateDetails,
+  })? getSnappingCalculator;
+
   /// Callback for when the sheet moves.
   ///
   /// Is called every time the sheet moves, both when snapping and moving
@@ -115,6 +129,7 @@ class SnappingSheet extends StatefulWidget {
     this.child,
     this.lockOverflowDrag = false,
     this.controller,
+    this.getSnappingCalculator,
     this.onSheetMoved,
     this.onSnapCompleted,
     this.onSnapStart,
@@ -143,6 +158,7 @@ class SnappingSheet extends StatefulWidget {
     this.child,
     this.lockOverflowDrag = false,
     this.controller,
+    this.getSnappingCalculator,
     this.onSheetMoved,
     this.onSnapCompleted,
     this.onSnapStart,
@@ -164,6 +180,7 @@ class _SnappingSheetState extends State<SnappingSheet>
   late SnappingPosition _lastSnappingPosition;
   late AnimationController _animationController;
   Animation<double>? _snappingAnimation;
+  DragUpdateDetails? _lastDragUpdate;
 
   @override
   void initState() {
@@ -249,7 +266,11 @@ class _SnappingSheetState extends State<SnappingSheet>
     return newPosition;
   }
 
-  void _dragSheet(double dragAmount) {
+  void _dragSheet(DragUpdateDetails lastDragUpdate) {
+    _lastDragUpdate = lastDragUpdate;
+    double dragAmount = widget.axis == Axis.horizontal
+        ? -lastDragUpdate.delta.dx
+        : lastDragUpdate.delta.dy;
     if (_animationController.isAnimating) {
       _animationController.stop();
     }
@@ -293,6 +314,16 @@ class _SnappingSheetState extends State<SnappingSheet>
   }
 
   SnappingCalculator _getSnappingCalculator() {
+    if (widget.getSnappingCalculator != null) {
+      return widget.getSnappingCalculator!(
+        allSnappingPositions: widget.snappingPositions,
+        lastSnappingPosition: _lastSnappingPosition,
+        maxHeight: sheetSize,
+        grabbingHeight: widget.grabbingHeight,
+        currentPosition: _currentPosition,
+        lastDragUpdateDetails: _lastDragUpdate,
+      );
+    }
     return SnappingCalculator(
         allSnappingPositions: widget.snappingPositions,
         lastSnappingPosition: _lastSnappingPosition,
