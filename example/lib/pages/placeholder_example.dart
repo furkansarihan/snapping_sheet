@@ -1,7 +1,7 @@
 import 'package:example/shared/appbar.dart';
 import 'package:example/shared/dummy_background.dart';
 import 'package:flutter/material.dart';
-import 'package:snapping_sheet/snapping_sheet.dart';
+import 'package:snapping_sheet_2/snapping_sheet.dart';
 
 class PlaceholderExample extends StatelessWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:snapping_sheet/snapping_sheet.dart';
-import 'package:snapping_sheet/src/sheet_size_calculator.dart';
+import 'package:snapping_sheet_2/snapping_sheet.dart';
+import 'package:snapping_sheet_2/src/sheet_size_calculator.dart';
 
 class ScrollControllerOverride extends StatefulWidget {
   final SheetSizeCalculator sizeCalculator;

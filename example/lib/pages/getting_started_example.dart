@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:snapping_sheet/snapping_sheet.dart';
+import 'package:snapping_sheet_2/snapping_sheet.dart';
 
 class GettingStartedExample extends StatelessWidget {
   @override

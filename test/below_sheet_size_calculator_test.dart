@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:snapping_sheet/snapping_sheet.dart';
-import 'package:snapping_sheet/src/below_sheet_size_calculator.dart';
+import 'package:snapping_sheet_2/snapping_sheet.dart';
+import 'package:snapping_sheet_2/src/below_sheet_size_calculator.dart';
 
 void main() {
   group('Testing with dynamic size.', () {

@@ -1,12 +1,12 @@
 import 'package:flutter/widgets.dart';
-import 'package:snapping_sheet/src/above_sheet_size_calculator.dart';
-import 'package:snapping_sheet/src/below_sheet_size_calculator.dart';
-import 'package:snapping_sheet/src/on_drag_wrapper.dart';
-import 'package:snapping_sheet/src/sheet_content_wrapper.dart';
-import 'package:snapping_sheet/src/sheet_position_data.dart';
-import 'package:snapping_sheet/src/snapping_calculator.dart';
-import 'package:snapping_sheet/src/snapping_position.dart';
-import 'package:snapping_sheet/src/snapping_sheet_content.dart';
+import 'package:snapping_sheet_2/src/above_sheet_size_calculator.dart';
+import 'package:snapping_sheet_2/src/below_sheet_size_calculator.dart';
+import 'package:snapping_sheet_2/src/on_drag_wrapper.dart';
+import 'package:snapping_sheet_2/src/sheet_content_wrapper.dart';
+import 'package:snapping_sheet_2/src/sheet_position_data.dart';
+import 'package:snapping_sheet_2/src/snapping_calculator.dart';
+import 'package:snapping_sheet_2/src/snapping_position.dart';
+import 'package:snapping_sheet_2/src/snapping_sheet_content.dart';
 
 class SnappingSheet extends StatefulWidget {
   /// The content for the above part of the sheet.

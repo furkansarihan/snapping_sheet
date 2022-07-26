@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
-import 'package:snapping_sheet/src/on_drag_wrapper.dart';
-import 'package:snapping_sheet/src/scroll_controller_override.dart';
-import 'package:snapping_sheet/src/sheet_size_calculator.dart';
-import 'package:snapping_sheet/src/snapping_calculator.dart';
-import 'package:snapping_sheet/src/snapping_sheet_content.dart';
+import 'package:snapping_sheet_2/src/on_drag_wrapper.dart';
+import 'package:snapping_sheet_2/src/scroll_controller_override.dart';
+import 'package:snapping_sheet_2/src/sheet_size_calculator.dart';
+import 'package:snapping_sheet_2/src/snapping_calculator.dart';
+import 'package:snapping_sheet_2/src/snapping_sheet_content.dart';
 
 class SheetContentWrapper extends StatefulWidget {
   final SheetSizeCalculator sizeCalculator;

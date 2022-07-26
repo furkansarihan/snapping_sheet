@@ -1,6 +1,6 @@
 import 'package:example/pages/menu.dart';
 import 'package:flutter/material.dart';
-import 'package:snapping_sheet/snapping_sheet.dart';
+import 'package:snapping_sheet_2/snapping_sheet.dart';
 
 void main() {
   runApp(SnappingSheetExampleApp());

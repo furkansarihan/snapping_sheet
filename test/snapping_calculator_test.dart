@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:snapping_sheet/src/snapping_calculator.dart';
-import 'package:snapping_sheet/src/snapping_position.dart';
+import 'package:snapping_sheet_2/src/snapping_calculator.dart';
+import 'package:snapping_sheet_2/src/snapping_position.dart';
 
 void main() {
   double maxHeight = 1000;

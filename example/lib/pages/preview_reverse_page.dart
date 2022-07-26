@@ -3,7 +3,7 @@ import 'package:example/shared/default_grabbing.dart';
 import 'package:example/shared/dummy_background.dart';
 import 'package:example/shared/dummy_content.dart';
 import 'package:flutter/material.dart';
-import 'package:snapping_sheet/snapping_sheet.dart';
+import 'package:snapping_sheet_2/snapping_sheet.dart';
 
 class PreviewReversePage extends StatelessWidget {
   final ScrollController _scrollController = ScrollController();

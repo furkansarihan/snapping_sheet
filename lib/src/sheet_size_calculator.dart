@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:snapping_sheet/src/sheet_size_behaviors.dart';
-import 'package:snapping_sheet/src/snapping_sheet_content.dart';
+import 'package:snapping_sheet_2/src/sheet_size_behaviors.dart';
+import 'package:snapping_sheet_2/src/snapping_sheet_content.dart';
 
 abstract class SheetSizeCalculator {
   final SnappingSheetContent? sheetData;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:snapping_sheet/snapping_sheet.dart';
-import 'package:snapping_sheet/src/sheet_position_data.dart';
+import 'package:snapping_sheet_2/snapping_sheet.dart';
+import 'package:snapping_sheet_2/src/sheet_position_data.dart';
 
 void main() {
   group("Test callback functions. ", () {

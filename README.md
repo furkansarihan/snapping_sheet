@@ -1,3 +1,6 @@
+## Notice
+This package is a fork of [snapping_sheet](https://pub.dev/packages/snapping_sheet).
+</br></br>
 <img src="https://github.com/AdamJonsson/snapping_sheet/raw/3.0.0/assets/ReadmeBanner.png">
 
 # Snapping Sheet
@@ -53,7 +56,7 @@ As usual, begin by adding the package to your pubspec.yaml file, see [install in
 Here is the most basic setup with the Snapping Sheet:
 ```dart
     import 'package:flutter/material.dart';
-    import 'package:snapping_sheet/snapping_sheet.dart';
+    import 'package:snapping_sheet_2/snapping_sheet.dart';
 
     class GettingStartedExample extends StatelessWidget {
         @override

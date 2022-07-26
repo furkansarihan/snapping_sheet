@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:snapping_sheet/src/snapping_position.dart';
+import 'package:snapping_sheet_2/src/snapping_position.dart';
 
 void main() {
   group("Testing with snapping position factor.", () {

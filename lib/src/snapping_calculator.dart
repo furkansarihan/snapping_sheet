@@ -1,5 +1,5 @@
 import 'dart:math';
-import 'package:snapping_sheet/src/snapping_position.dart';
+import 'package:snapping_sheet_2/src/snapping_position.dart';
 
 enum DragDirection {
   up,

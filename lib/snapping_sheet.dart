@@ -1,4 +1,4 @@
-library snapping_sheet;
+library snapping_sheet_2;
 
 export 'src/snapping_sheet_widget.dart';
 export 'src/snapping_sheet_content.dart';

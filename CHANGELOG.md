@@ -1,3 +1,5 @@
+## [3.1.1] - 26/07/2022
+* **New feature**: Custom snapping calculator support.
 ## [3.1.0] - 22/04/2021
 * **New feature**: Horizontal snapping sheets are not possible using `SnappingSheet.horizontal(...)`!
 * **New feature**: `controller.snapToPosition` returns a future. 
