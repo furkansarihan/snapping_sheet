@@ -1,6 +1,6 @@
 name: snapping_sheet_2
 description: A package that provides a sheet widget that snaps to different vertical & horizontal positions
-version: 3.1.2
+version: 3.1.3
 homepage: https://github.com/furkansarihan/snapping_sheet_2
 
 environment:

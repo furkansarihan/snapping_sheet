@@ -85,8 +85,10 @@ class SnappingSheet extends StatefulWidget {
     required double maxHeight,
     required double grabbingHeight,
     required double currentPosition,
-    required DragUpdateDetails? lastDragUpdateDetails,
   })? getSnappingCalculator;
+
+  /// Callback for when a drag move happened.
+  final Function(DragUpdateDetails positionData)? onDragUpdate;
 
   /// Callback for when the sheet moves.
   ///
@@ -130,6 +132,7 @@ class SnappingSheet extends StatefulWidget {
     this.lockOverflowDrag = false,
     this.controller,
     this.getSnappingCalculator,
+    this.onDragUpdate,
     this.onSheetMoved,
     this.onSnapCompleted,
     this.onSnapStart,
@@ -159,6 +162,7 @@ class SnappingSheet extends StatefulWidget {
     this.lockOverflowDrag = false,
     this.controller,
     this.getSnappingCalculator,
+    this.onDragUpdate,
     this.onSheetMoved,
     this.onSnapCompleted,
     this.onSnapStart,
@@ -180,7 +184,6 @@ class _SnappingSheetState extends State<SnappingSheet>
   late SnappingPosition _lastSnappingPosition;
   late AnimationController _animationController;
   Animation<double>? _snappingAnimation;
-  DragUpdateDetails? _lastDragUpdate;
 
   @override
   void initState() {
@@ -266,11 +269,11 @@ class _SnappingSheetState extends State<SnappingSheet>
     return newPosition;
   }
 
-  void _dragSheet(DragUpdateDetails lastDragUpdate) {
-    _lastDragUpdate = lastDragUpdate;
+  void _dragSheet(DragUpdateDetails dragUpdateDetails) {
+    widget.onDragUpdate?.call(dragUpdateDetails);
     double dragAmount = widget.axis == Axis.horizontal
-        ? -lastDragUpdate.delta.dx
-        : lastDragUpdate.delta.dy;
+        ? -dragUpdateDetails.delta.dx
+        : dragUpdateDetails.delta.dy;
     if (_animationController.isAnimating) {
       _animationController.stop();
     }
@@ -283,7 +286,6 @@ class _SnappingSheetState extends State<SnappingSheet>
     var bestSnappingPosition =
         _getSnappingCalculator().getBestSnappingPosition();
     _snapToPosition(bestSnappingPosition);
-    _lastDragUpdate = null;
   }
 
   TickerFuture _snapToPosition(SnappingPosition snappingPosition) {
@@ -322,7 +324,6 @@ class _SnappingSheetState extends State<SnappingSheet>
         maxHeight: sheetSize,
         grabbingHeight: widget.grabbingHeight,
         currentPosition: _currentPosition,
-        lastDragUpdateDetails: _lastDragUpdate,
       );
     }
     return SnappingCalculator(

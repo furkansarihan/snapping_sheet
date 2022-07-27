@@ -1,3 +1,5 @@
+## [3.1.3] - 27/07/2022
+* **New feature**: `onDragUpdate` callback added.
 ## [3.1.2] - 27/07/2022
 * Fix last drag update cleanup a after snap.
 ## [3.1.1] - 26/07/2022
