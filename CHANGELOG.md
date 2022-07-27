@@ -1,3 +1,5 @@
+## [3.1.2] - 27/07/2022
+* Fix last drag update cleanup a after snap.
 ## [3.1.1] - 26/07/2022
 * **New feature**: Custom snapping calculator support.
 ## [3.1.0] - 22/04/2021

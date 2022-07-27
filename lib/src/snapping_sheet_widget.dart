@@ -283,6 +283,7 @@ class _SnappingSheetState extends State<SnappingSheet>
     var bestSnappingPosition =
         _getSnappingCalculator().getBestSnappingPosition();
     _snapToPosition(bestSnappingPosition);
+    _lastDragUpdate = null;
   }
 
   TickerFuture _snapToPosition(SnappingPosition snappingPosition) {
