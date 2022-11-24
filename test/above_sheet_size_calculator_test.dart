@@ -12,7 +12,7 @@ void main() {
       maxHeight: 1000,
       sheetData: SnappingSheetContent(
         child: SizedBox(),
-        draggable: false,
+        draggable: () => false,
         sizeBehavior: SheetSizeFill(),
       ),
     );
@@ -35,7 +35,7 @@ void main() {
       maxHeight: 1000,
       sheetData: SnappingSheetContent(
         child: SizedBox(),
-        draggable: false,
+        draggable: () => false,
         sizeBehavior: SheetSizeStatic(
           expandOnOverflow: false,
           size: 500,
@@ -61,7 +61,7 @@ void main() {
       maxHeight: 1000,
       sheetData: SnappingSheetContent(
         child: SizedBox(),
-        draggable: false,
+        draggable: () => false,
         sizeBehavior: SheetSizeStatic(
           expandOnOverflow: true,
           size: 500,

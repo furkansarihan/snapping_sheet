@@ -37,7 +37,7 @@ class SimpleSnappingSheet extends StatelessWidget {
       grabbingHeight: 75,
       sheetAbove: null,
       sheetBelow: SnappingSheetContent(
-        draggable: true,
+        draggable: () => true,
         childScrollController: listViewController,
         child: Container(
           color: Colors.white,

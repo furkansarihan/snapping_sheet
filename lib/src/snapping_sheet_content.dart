@@ -22,13 +22,13 @@ class SnappingSheetContent {
   final ScrollController? childScrollController;
 
   /// If the content should be draggable.
-  final bool draggable;
+  final bool Function()? draggable;
   Widget _child;
   SheetLocation location = SheetLocation.unknown;
 
   SnappingSheetContent({
     required Widget child,
-    this.draggable = false,
+    this.draggable,
     this.sizeBehavior = const SheetSizeFill(),
     this.childScrollController,
   }) : this._child = child;
@@ -36,6 +36,7 @@ class SnappingSheetContent {
   double? _getHeight() {
     var sizeBehavior = this.sizeBehavior;
     if (sizeBehavior is SheetSizeStatic) return sizeBehavior.size;
+    return null;
   }
 
   Widget get child {

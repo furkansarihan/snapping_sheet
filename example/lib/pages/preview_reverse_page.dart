@@ -36,7 +36,7 @@ class PreviewReversePage extends StatelessWidget {
         ),
         sheetAbove: SnappingSheetContent(
           childScrollController: _scrollController,
-          draggable: true,
+          draggable: () => true,
           child: DummyContent(
             reverse: true,
             controller: _scrollController,

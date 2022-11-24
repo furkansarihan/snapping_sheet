@@ -56,12 +56,10 @@ class _SheetContentWrapperState extends State<SheetContentWrapper> {
 
   Widget _wrapWithNecessaryWidgets(Widget child) {
     Widget wrappedChild = child;
-    if (widget.sheetData!.draggable) {
-      if (widget.sheetData!.childScrollController != null) {
-        wrappedChild = _wrapWithScrollControllerOverride(wrappedChild);
-      } else {
-        wrappedChild = _wrapWithDragWrapper(wrappedChild);
-      }
+    if (widget.sheetData!.childScrollController != null) {
+      wrappedChild = _wrapWithScrollControllerOverride(wrappedChild);
+    } else {
+      wrappedChild = _wrapWithDragWrapper(wrappedChild);
     }
     return wrappedChild;
   }

@@ -135,7 +135,7 @@ void main() {
               child: Container(
                 color: Colors.white,
               ),
-              draggable: false,
+              draggable: () => false,
             ),
             sheetAbove: null,
             child: SizedBox(),
@@ -173,7 +173,7 @@ void main() {
               child: Container(
                 color: Colors.white,
               ),
-              draggable: true,
+              draggable: () => true,
             ),
             sheetAbove: null,
             child: SizedBox(),

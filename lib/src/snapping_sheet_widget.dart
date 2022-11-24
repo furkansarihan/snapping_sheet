@@ -384,7 +384,13 @@ class _SnappingSheetState extends State<SnappingSheet>
               SheetContentWrapper(
                 axis: widget.axis,
                 dragEnd: _dragEnd,
-                dragUpdate: _dragSheet,
+                dragUpdate: (dragUpdateDetails) {
+                  if (widget.sheetAbove?.draggable == null) {
+                    _dragSheet(dragUpdateDetails);
+                  } else if (widget.sheetAbove!.draggable!.call()) {
+                    _dragSheet(dragUpdateDetails);
+                  }
+                },
                 currentPosition: _currentPosition,
                 snappingCalculator: _getSnappingCalculator(),
                 sizeCalculator: AboveSheetSizeCalculator(
@@ -401,7 +407,16 @@ class _SnappingSheetState extends State<SnappingSheet>
               SheetContentWrapper(
                 axis: widget.axis,
                 dragEnd: _dragEnd,
-                dragUpdate: _dragSheet,
+                dragUpdate: (dragUpdateDetails) {
+                  if (widget.sheetBelow?.draggable == null) {
+                    _dragSheet(dragUpdateDetails);
+                  }
+
+                  bool result = widget.sheetBelow!.draggable!.call();
+                  if (result) {
+                    _dragSheet(dragUpdateDetails);
+                  }
+                },
                 currentPosition: _currentPosition,
                 snappingCalculator: _getSnappingCalculator(),
                 sizeCalculator: BelowSheetSizeCalculator(

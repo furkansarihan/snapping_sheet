@@ -35,7 +35,7 @@ class HorizontalExample extends StatelessWidget {
               grabbingWidth: 50,
               grabbing: _GrabbingWidget(),
               sheetRight: SnappingSheetContent(
-                draggable: true,
+                draggable: () => true,
                 childScrollController: _scrollController,
                 child: Container(
                   color: Colors.white,
