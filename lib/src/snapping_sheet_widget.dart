@@ -31,6 +31,9 @@ class SnappingSheet extends StatefulWidget {
   /// The height of the grabbing widget.
   final double grabbingHeight;
 
+  /// The position of the grabbing
+  final GrabbingPosition grabbingPosition;
+
   /// The widget under the snapping sheet.
   ///
   /// Is often the main content of a page or app.
@@ -136,6 +139,7 @@ class SnappingSheet extends StatefulWidget {
     this.onSheetMoved,
     this.onSnapCompleted,
     this.onSnapStart,
+    this.grabbingPosition = GrabbingPosition.below,
   })  : this.axis = Axis.vertical,
         assert(snappingPositions.isNotEmpty),
         super(key: key);
@@ -166,6 +170,7 @@ class SnappingSheet extends StatefulWidget {
     this.onSheetMoved,
     this.onSnapCompleted,
     this.onSnapStart,
+    this.grabbingPosition = GrabbingPosition.below,
   })  : this.sheetAbove = sheetRight,
         this.sheetBelow = sheetLeft,
         this.axis = Axis.horizontal,
@@ -378,7 +383,8 @@ class _SnappingSheetState extends State<SnappingSheet>
               if (widget.child != null) Positioned.fill(child: widget.child!),
 
               // The grabber content
-              buildGrabbingWidget(),
+              if (widget.grabbingPosition == GrabbingPosition.below)
+                buildGrabbingWidget(),
 
               // The above sheet content
               SheetContentWrapper(
@@ -402,6 +408,10 @@ class _SnappingSheetState extends State<SnappingSheet>
                 ),
                 sheetData: widget.sheetAbove,
               ),
+
+              // The grabber content
+              if (widget.grabbingPosition == GrabbingPosition.middle)
+                buildGrabbingWidget(),
 
               // The below sheet content
               SheetContentWrapper(
@@ -428,6 +438,10 @@ class _SnappingSheetState extends State<SnappingSheet>
                 ),
                 sheetData: widget.sheetBelow,
               ),
+
+              // The grabber content
+              if (widget.grabbingPosition == GrabbingPosition.above)
+                buildGrabbingWidget(),
             ],
           ),
         );
