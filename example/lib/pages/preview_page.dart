@@ -31,7 +31,7 @@ class PreviewPage extends StatelessWidget {
         grabbing: DefaultGrabbing(),
         sheetBelow: SnappingSheetContent(
           childScrollController: _scrollController,
-          draggable: () => true,
+          draggable: (details) => true,
           child: DummyContent(
             controller: _scrollController,
           ),

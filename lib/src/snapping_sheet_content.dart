@@ -22,7 +22,7 @@ class SnappingSheetContent {
   final ScrollController? childScrollController;
 
   /// If the content should be draggable.
-  final bool Function()? draggable;
+  final bool Function(DragUpdateDetails)? draggable;
   Widget _child;
   SheetLocation location = SheetLocation.unknown;
 

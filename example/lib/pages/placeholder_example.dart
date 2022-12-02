@@ -37,13 +37,13 @@ class PlaceholderExample extends StatelessWidget {
             child: Placeholder(color: Colors.black),
           ),
           sheetAbove: SnappingSheetContent(
-            draggable: () => true,
+            draggable: (details) => true,
             child: Container(
                 color: Colors.white.withOpacity(0.75),
                 child: Placeholder(color: Colors.green)),
           ),
           sheetBelow: SnappingSheetContent(
-            draggable: () => true,
+            draggable: (details) => true,
             child: Container(
               color: Colors.white.withOpacity(0.75),
               child: Placeholder(color: Colors.green[800] ?? Colors.green),

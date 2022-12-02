@@ -70,7 +70,7 @@ Here is the most basic setup with the Snapping Sheet:
                     // TODO: Add your grabbing widget here,
                     grabbing: MyOwnGrabbingWidget(),
                     sheetBelow: SnappingSheetContent(
-                        draggable: () => true,
+                        draggable: (details) => true,
                         // TODO: Add your sheet content here
                         child: MyOwnSheetContent(),
                     ),
@@ -120,12 +120,12 @@ You can place content both below or/and above the grabbing part of the sheet. If
     SnappingSheet(
         sheetAbove: SnappingSheetContent(
             sizeBehavior: SheetSizeFill(),
-            draggable: () => false,
+            draggable: (details) => false,
             child: Container(color: Colors.blue),
         ),
         sheetBelow: SnappingSheetContent(
             sizeBehavior: SheetSizeStatic(size: 300),
-            draggable: () => true,
+            draggable: (details) => true,
             child: Container(color: Colors.red),
         ),
     )
@@ -139,7 +139,7 @@ In order to make the sheet know about the scroll controller, you need to provide
         sheetBelow: SnappingSheetContent(
             // Pass in the scroll controller here!
             childScrollController: _myScrollController,
-            draggable: () => true,
+            draggable: (details) => true,
             child: ListView(
                 // And in the scrollable widget that you create!
                 controller: _myScrollController,
@@ -164,11 +164,11 @@ You can control the Snapping Sheet using the `SnappingSheetController`
         controller: SnappingSheetController();
 
         sheetAbove: SnappingSheetContent(
-            draggable: () => false,
+            draggable: (details) => false,
             child: Container(color: Colors.blue),
         ),
         sheetBelow: SnappingSheetContent(
-            draggable: () => true,
+            draggable: (details) => true,
             child: Container(color: Colors.red),
         ),
     )
@@ -216,7 +216,7 @@ There also exist a horizontal mode for the snapping sheet. To use it, see the co
         // TODO: Add your grabbing widget here,
         grabbing: MyOwnGrabbingWidget(),
         sheetLeft: SnappingSheetContent(
-            draggable: () => true,
+            draggable: (details) => true,
             // TODO: Add your sheet content here
             child: MyOwnSheetContent(),
         ),

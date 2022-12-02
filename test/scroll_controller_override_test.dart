@@ -237,7 +237,7 @@ class _BasicSnappingSheet extends StatelessWidget {
   SnappingSheetContent _generateScrollContent() {
     return SnappingSheetContent(
       childScrollController: controller,
-      draggable: () => true,
+      draggable: (details) => true,
       child: SingleChildScrollView(
         reverse: isAbove,
         key: ValueKey("ScrollContent"),

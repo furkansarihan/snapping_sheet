@@ -1,3 +1,6 @@
+## [3.1.5] - 01/12/2022
+* **New feature**: `draggable` callback contains `dragUpdateDetails`.
+* **New feature**: `allowScrolling` callback for when `ScrollController` attached.
 ## [3.1.4] - 24/11/2022
 * **New feature**: `draggable` is a function instead of variable.
 ## [3.1.3] - 27/07/2022

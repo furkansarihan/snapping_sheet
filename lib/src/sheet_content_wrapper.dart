@@ -9,6 +9,13 @@ class SheetContentWrapper extends StatefulWidget {
   final SheetSizeCalculator sizeCalculator;
   final SnappingSheetContent? sheetData;
 
+  final bool Function({
+    required double biggestSnapPos,
+    required double smallestSnapPos,
+    required double currentPos,
+    required DragUpdateDetails? details,
+    required DragDirection? currentDragDirection,
+  })? allowScrolling;
   final Function(DragUpdateDetails) dragUpdate;
   final VoidCallback dragEnd;
   final double currentPosition;
@@ -21,6 +28,7 @@ class SheetContentWrapper extends StatefulWidget {
       required this.sizeCalculator,
       required this.currentPosition,
       required this.snappingCalculator,
+      required this.allowScrolling,
       required this.dragUpdate,
       required this.dragEnd,
       required this.axis})
@@ -45,6 +53,7 @@ class _SheetContentWrapperState extends State<SheetContentWrapper> {
       axis: widget.axis,
       sizeCalculator: widget.sizeCalculator,
       scrollController: widget.sheetData!.childScrollController!,
+      allowScrolling: widget.allowScrolling,
       dragUpdate: widget.dragUpdate,
       dragEnd: widget.dragEnd,
       currentPosition: widget.currentPosition,

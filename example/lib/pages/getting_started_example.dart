@@ -10,7 +10,7 @@ class GettingStartedExample extends StatelessWidget {
         grabbingHeight: 75,
         grabbing: MyOwnGrabbingWidget(), // TODO: Add your grabbing widget here,
         sheetAbove: SnappingSheetContent(
-          draggable: () => true,
+          draggable: (details) => true,
           child: MyOwnSheetContent(), // TODO: Add your sheet content here
         ),
       ),

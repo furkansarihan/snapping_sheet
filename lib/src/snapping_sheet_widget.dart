@@ -87,6 +87,19 @@ class SnappingSheet extends StatefulWidget {
     required double currentPosition,
   })? getSnappingCalculator;
 
+  /// Callback for allow scrolling if ScrollController attached.
+  /// Deafult behaviour is not allowing scroll on the edge of scroll controller
+  /// to start moving the sheet.
+  ///
+  /// If returned false, touch input moves the sheet.
+  final bool Function({
+    required double biggestSnapPos,
+    required double smallestSnapPos,
+    required double currentPos,
+    required DragUpdateDetails? details,
+    required DragDirection? currentDragDirection,
+  })? allowScrolling;
+
   /// Callback for when a drag move happened.
   final Function(DragUpdateDetails positionData)? onDragUpdate;
 
@@ -132,6 +145,7 @@ class SnappingSheet extends StatefulWidget {
     this.lockOverflowDrag = false,
     this.controller,
     this.getSnappingCalculator,
+    this.allowScrolling,
     this.onDragUpdate,
     this.onSheetMoved,
     this.onSnapCompleted,
@@ -162,6 +176,7 @@ class SnappingSheet extends StatefulWidget {
     this.lockOverflowDrag = false,
     this.controller,
     this.getSnappingCalculator,
+    this.allowScrolling,
     this.onDragUpdate,
     this.onSheetMoved,
     this.onSnapCompleted,
@@ -383,11 +398,13 @@ class _SnappingSheetState extends State<SnappingSheet>
               // The above sheet content
               SheetContentWrapper(
                 axis: widget.axis,
+                allowScrolling: widget.allowScrolling,
                 dragEnd: _dragEnd,
                 dragUpdate: (dragUpdateDetails) {
                   if (widget.sheetAbove?.draggable == null) {
                     _dragSheet(dragUpdateDetails);
-                  } else if (widget.sheetAbove!.draggable!.call()) {
+                  } else if (widget.sheetAbove!.draggable!
+                      .call(dragUpdateDetails)) {
                     _dragSheet(dragUpdateDetails);
                   }
                 },
@@ -406,14 +423,13 @@ class _SnappingSheetState extends State<SnappingSheet>
               // The below sheet content
               SheetContentWrapper(
                 axis: widget.axis,
+                allowScrolling: widget.allowScrolling,
                 dragEnd: _dragEnd,
                 dragUpdate: (dragUpdateDetails) {
                   if (widget.sheetBelow?.draggable == null) {
                     _dragSheet(dragUpdateDetails);
-                  }
-
-                  bool result = widget.sheetBelow!.draggable!.call();
-                  if (result) {
+                  } else if (widget.sheetBelow!.draggable!
+                      .call(dragUpdateDetails)) {
                     _dragSheet(dragUpdateDetails);
                   }
                 },
