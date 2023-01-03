@@ -13,6 +13,13 @@ class GrabbingContentOffset {
   static const bottom = -1.0;
 }
 
+/// The position of the grabbing in the stack
+enum GrabbingPosition {
+  below,
+  middle,
+  above
+}
+
 class SnappingPosition {
   final double? _positionPixel;
   final double? _positionFactor;
